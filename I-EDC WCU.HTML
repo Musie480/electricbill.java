@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Membership Registration</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  #registrationForm {
+    margin-top: 20px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  input[type="text"],
+  input[type="tel"],
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  .innovation-img {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    border-radius: 50%;
+    animation: rotate 4s infinite linear;
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .welcome-text {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+  }
+  @media only screen and (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+    .innovation-img {
+      width: 150px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <img src="innovation_image.jpg" alt="Innovation Image" class="innovation-img">
+  <h2>Welcome to the Wachemo University Innovation Team!</h2>
+  <div class="welcome-text">Fill out the form below to register:</div>
+  <form id="registrationForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" required>
+    <label for="department">Department:</label>
+    <input type="text" id="department" name="department" required>
+    <label for="year">Year:</label>
+    <input type="text" id="year" name="year" required>
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" required>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<script>
+document.getElementById("registrationForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent default form submission
+  
+  // Get form data
+  var formData = new FormData(event.target);
+  
+  // Construct email body
+  var emailBody = "Name: " + formData.get("name") + "\n";
+  emailBody += "ID: " + formData.get("id") + "\n";
+  emailBody += "Department: " + formData.get("department") + "\n";
+  emailBody += "Year: " + formData.get("year") + "\n";
+  emailBody += "Phone Number: " + formData.get("phone") + "\n";
+  
+  // Send email
+  var mailtoLink = "mailto:Musie480@gmail.com" +
+                  "?subject=Team Membership Registration" +
+                  "&body=" + encodeURIComponent(emailBody);
+  
+  // Open default email client
+  window.location.href = mailtoLink;
+});
+</script>
+</body>
+</html>
